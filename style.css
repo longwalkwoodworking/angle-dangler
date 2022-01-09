@@ -1,0 +1,14 @@
+.boundary {
+	stroke: red;
+	fill: none;
+}
+
+.l {
+	stroke: black;
+	stroke-width: 0.15mm;
+}
+
+.label {
+	font-family: "arial";
+	font-size: 5mm;
+}
