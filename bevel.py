@@ -17,7 +17,7 @@ def ang_line(d, theta, x1=0, x2=G_WIDTH):
     x1 *= mm
     y1 *= mm
     x2 *= mm
-    y2 *=mm
+    y2 *= mm
 
     d.add(d.line((x1, y1), (x2, y2), **{"class": "l"}))
 
