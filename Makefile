@@ -1,11 +1,11 @@
-BEVEL_GAUGES := bevel.svg lefty.svg
+BEVEL_GAUGES := bevel.svg lefty.svg bevel-embed.svg lefty-embed.svg
 all: $(BEVEL_GAUGES)
 
-bevel.svg: bevel.py Makefile
-	python3 $< >$@
+$(filter %embed.svg,$(BEVEL_GAUGES)) : SCRIPT_ARGS += --embed-style
+$(filter lefty%,$(BEVEL_GAUGES)) : SCRIPT_ARGS += --lefty
 
-lefty.svg: bevel.py Makefile
-	python3 $< --lefty $@
+$(BEVEL_GAUGES): %: bevel.py Makefile style.css
+	python3 $< $(SCRIPT_ARGS) $@
 
 .PHONY: clean
 clean:

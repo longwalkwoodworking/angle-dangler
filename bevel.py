@@ -12,6 +12,7 @@ G_WIDTH = 80
 G_Y_OFFSET = 12
 G_ORIGIN = 150
 G_HALF_ANG_WIDTH = 12
+G_STYLESHEET = './style.css'
 
 # Calculate the y-coordinate of a line given the x coordinate and the angle
 # theta for a bevel gauge with the origin on the right side (righty) and left
@@ -45,12 +46,14 @@ def main ():
     parser = ArgumentParser()
     parser.add_argument('--lefty', dest='y_func', action='store_const',
             const=lefty, default=righty)
+    parser.add_argument('--embed-style', action='store_true')
     parser.add_argument('--max-theta', action='store', default=50)
     parser.add_argument('filename', nargs='?')
     args = parser.parse_args()
 
     y_func = args.y_func
     max_theta = args.max_theta
+    embed_style = args.embed_style
     filename = args.filename
     
     # Height is the same regardless of handedness.
@@ -65,9 +68,12 @@ def main ():
     d = drawing.Drawing(filename, (G_WIDTH*mm, height*mm))
 
     # External stylesheet support is sort of iffy. Browsers seem to be OK with
-    # it, CorelDraw seems to be OK with it, other renderers not so much. Submit
-    # a pull request to fix this. Or don't.
-    d.add_stylesheet("./style.css", "asdf")
+    # it, CorelDraw seems to be OK with it, other renderers not so much.
+    if embed_style:
+        with open(G_STYLESHEET, 'r') as style:
+            d.embed_stylesheet(style.read())
+    else:
+        d.add_stylesheet(G_STYLESHEET, "asdf")
 
     # SVG doesn't have a hairline width to define the boundary. Depending on
     # your personal laser cutter, you may need to do something in whatever
