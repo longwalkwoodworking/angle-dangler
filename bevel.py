@@ -47,7 +47,7 @@ def main ():
     parser.add_argument('--lefty', dest='y_func', action='store_const',
             const=lefty, default=righty)
     parser.add_argument('--embed-style', action='store_true')
-    parser.add_argument('--max-theta', action='store', default=50)
+    parser.add_argument('--max-theta', action='store', default=50, type=int)
     parser.add_argument('filename', nargs='?')
     args = parser.parse_args()
 
