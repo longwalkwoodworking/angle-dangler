@@ -1,7 +1,7 @@
-BEVEL_GAUGES := bevel.svg lefty.svg bevel-embed.svg lefty-embed.svg
+BEVEL_GAUGES := bevel.svg lefty.svg bevel-linked.svg lefty-linked.svg
 all: $(BEVEL_GAUGES)
 
-$(filter %embed.svg,$(BEVEL_GAUGES)) : SCRIPT_ARGS += --embed-style
+$(filter %linked.svg,$(BEVEL_GAUGES)) : SCRIPT_ARGS += --link-style
 $(filter lefty%,$(BEVEL_GAUGES)) : SCRIPT_ARGS += --lefty
 
 $(BEVEL_GAUGES): %: bevel.py Makefile style.css

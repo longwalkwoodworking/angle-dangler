@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="./style.css" type="text/css" title="asdf" alternate="no" media="screen"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="298.10332629666823mm" version="1.1" width="80mm">
-  <defs>
-    <style type="text/css"><![CDATA[.boundary {
-	stroke: red;
-	fill: none;
-}
-
-.l {
-	stroke: black;
-	stroke-width: 0.15mm;
-}
-
-.label {
-	font-family: "arial";
-	font-size: 5mm;
-}
-]]></style>
-  </defs>
+  <defs/>
   <rect class="boundary" height="298.10332629666823mm" width="80mm" x="0mm" y="0mm"/>
   <line class="l" x1="0mm" x2="35mm" y1="12.0mm" y2="12.0mm"/>
   <line class="l" x1="44mm" x2="80mm" y1="12.0mm" y2="12.0mm"/>

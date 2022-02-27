@@ -46,14 +46,14 @@ def main ():
     parser = ArgumentParser()
     parser.add_argument('--lefty', dest='y_func', action='store_const',
             const=lefty, default=righty)
-    parser.add_argument('--embed-style', action='store_true')
+    parser.add_argument('--link-style', action='store_true')
     parser.add_argument('--max-theta', action='store', default=50, type=int)
     parser.add_argument('filename', nargs='?')
     args = parser.parse_args()
 
     y_func = args.y_func
     max_theta = args.max_theta
-    embed_style = args.embed_style
+    link_style = args.link_style
     filename = args.filename
     
     # Height is the same regardless of handedness.
@@ -69,11 +69,11 @@ def main ():
 
     # External stylesheet support is sort of iffy. Browsers seem to be OK with
     # it, CorelDraw seems to be OK with it, other renderers not so much.
-    if embed_style:
+    if link_style:
+        d.add_stylesheet(G_STYLESHEET, "asdf")
+    else:
         with open(G_STYLESHEET, 'r') as style:
             d.embed_stylesheet(style.read())
-    else:
-        d.add_stylesheet(G_STYLESHEET, "asdf")
 
     # SVG doesn't have a hairline width to define the boundary. Depending on
     # your personal laser cutter, you may need to do something in whatever
