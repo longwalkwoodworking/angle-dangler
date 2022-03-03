@@ -46,21 +46,21 @@ The dependencies are specified in [requirements.txt](requirements.txt). Nothing 
 
 ### Output
 
-The script defaults to writing the svg file to stdout, but you may specify an output file as a positional argument if you'd like to. The height of the resulting bevel gauge is printed to stderr as an aid to determining if you have a big enough piece of material on hand.
+The script defaults to writing the svg file to stdout, but you may specify an output file as a positional argument if you'd like to. The height of the resulting angle dangler is printed to stderr as an aid to determining if you have a big enough piece of material on hand.
 
 ### Maximum angle
 
-The maximum angle on the generated bevel gauge can be specified with the`--max-theta=` argument. Absolutely no error checking is done on this value. Perhaps surprisingly, if you specify 90 degrees, you'll an svg file that is tall, but not infinitely tall. I don't know why, and I'm not going digging because it's an obviously stupid thing to do.
+The maximum angle on the generated angle dangler can be specified with the`--max-theta=` argument. Absolutely no error checking is done on this value. Perhaps surprisingly, if you specify 90 degrees, you'll an svg file that is tall, but not infinitely tall. I don't know why, and I'm not going digging because it's an obviously stupid thing to do.
 
-If you want to do it anyway, and your laser cutter is large enough to cut this, *and* you can find a big enough piece of material, please send a picture of the resulting bevel gauge, taken from a satellite. A *practical* maximum is probably somewhere around 70 degrees. The script defaults to 50 degrees, which generates a bevel gauge a little under 300mm/12" tall. 45 degrees will fit on a piece of A4 or US letter paper with some room to spare.
+If you want to do it anyway, and your laser cutter is large enough to cut this, *and* you can find a big enough piece of material, please send a picture of the resulting angle dangler, taken from a satellite. A *practical* maximum is probably somewhere around 70 degrees. The script defaults to 50 degrees, which generates a dangler a little under 300mm/12" tall. 45 degrees will fit on a piece of A4 or US letter paper with some room to spare.
 
 ### Handedness
 
-The default bevel gauge is right-handed. `--lefty` will generate a left-handed one. I have no idea if this provides any ergonomic benefit to left-handed people.
+The default angle dangler is right-handed. `--lefty` will generate a left-handed one. I have no idea if this provides any ergonomic benefit to left-handed people.
 
 ### Linked stylesheet
 
-The default bevel gauge embeds its stylesheet. `--link-style` will generate one with a linked stylesheet instead. This is nerd stuff. You probably want an embedded stylesheet. If you want a linked one, you probably don't need me to explain why.
+The default angle dangler embeds its stylesheet. `--link-style` will generate one with a linked stylesheet instead. This is nerd stuff. You probably want an embedded stylesheet. If you want a linked one, you probably don't need me to explain why.
 
 Browsers and CorelDraw seem to understand external stylesheets. Other svg renderers are a crapshoot.
 
