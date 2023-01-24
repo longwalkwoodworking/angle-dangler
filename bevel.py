@@ -44,25 +44,37 @@ def ang_line(d, theta, x1=0, x2=G_WIDTH, y_func=righty):
 
 # Fortunately, the labels land in the same place whether it's a lefty or a
 # righty bevel gauge :-)
-def label(d, theta):
+def label(d, theta, bassackwards):
     # Pay no mind to the magic numbers...
     x1=37*mm
     y1=(2 + G_Y_OFFSET + (G_ORIGIN + G_WIDTH / 2) * tan(radians(theta))) * mm
-    d.add(d.text(str(theta), (x1, y1), **{"class": "label"}))
+
+    label_text = str(theta)
+
+    # For that one guy on the internet...
+    if bassackwards:
+        label_text = str(90 - theta)
+
+    d.add(d.text(label_text, (x1, y1), **{"class": "label"}))
 
 def main ():
     parser = ArgumentParser()
     parser.add_argument('--lefty', dest='y_func', action='store_const',
             const=lefty, default=righty)
     parser.add_argument('--link-style', action='store_true')
-    parser.add_argument('--max-theta', action='store', default=50, type=int)
     parser.add_argument('filename', nargs='?')
+
+    parser.add_argument('--max-theta', action='store', default=50, type=int)
+    parser.add_argument('--bassackwards', action='store_true')
+
     args = parser.parse_args()
 
     y_func = args.y_func
-    max_theta = args.max_theta
     link_style = args.link_style
     filename = args.filename
+
+    bassackwards = args.bassackwards
+    max_theta = args.max_theta
     
     # Height is the same regardless of handedness.
     # Equivalently, G_Y_OFFSET + lefty(G_WIDTH, max_theta) would work.
@@ -96,7 +108,7 @@ def main ():
 
     # 5 degree labels in the gaps left in the 5 degree lines
     for theta in range(0, max_theta + 1, 5):
-        label(d, theta)
+        label(d, theta, bassackwards)
 
     # Whole degree lines, except for the 5 degree lines
     for theta in range(0, max_theta + 1):
